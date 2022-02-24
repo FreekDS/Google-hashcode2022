@@ -26,7 +26,6 @@ class project():
         self.score=score
         self.best_before=best_before
         self.roles=list()
-
     def __str__(self):
         return "project:%s, roles %s"%(self.name,str(self.roles))
 
