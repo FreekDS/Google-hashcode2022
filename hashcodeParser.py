@@ -1,3 +1,6 @@
+import logic
+import output
+
 class human():
     def __init__(self,name:str):
         self.skills_list=list()
@@ -54,5 +57,13 @@ def parse_file(den_file:str):
 
 
 if __name__ == '__main__':
-    mensen,projecten=parse_file("input/f_find_great_mentors.in.txt")
+ #   mensen,projecten=parse_file("input/a_an_example.in.txt")
+    mensen, projecten = parse_file('input/b_better_start_small.in.txt')
+  #  mensen,projecten=parse_file('input/c_collaboration.in.txt')
+  #  mensen, projecten = parse_file('input/d_dense_schedule.in.txt')
+  #  mensen, projecten = parse_file('input/e_exceptional_skills.in.txt')
+  #  mensen, projecten = parse_file('input/f_find_great_mentors.in.txt')
+
+    succ = logic.calc_order(mensen, projecten)
+    output.write_output_maar_dan_goed("output/F.txt", succ)
     print()
