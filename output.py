@@ -1,9 +1,9 @@
 def write_output(name, proj_roles):
     file = open(name, "w")
 
-    file.write(len(proj_roles))
+    file.write(str(len(proj_roles.keys())) + "\n")
     for key, value in proj_roles.items():
-        file.write(key, "\n")
+        file.write(str(key) + "\n")
         roles = ""
         for person in value:
             roles += person + " "
