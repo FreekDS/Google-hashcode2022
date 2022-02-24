@@ -63,6 +63,14 @@ if __name__ == '__main__':
   #  mensen, projecten = parse_file('input/e_exceptional_skills.in.txt')
     mensen, projecten = parse_file('input/f_find_great_mentors.in.txt')
 
+files = [
+    'input/a_an_example.in.txt',
+    'input/b_better_start_small.in.txt',
+    'input/c_collaboration.in.txt',
+    'input/d_dense_schedule.in.txt',
+    'input/e_exceptional_skills.in.txt',
+    'input/f_find_great_mentors.in.txt',
+]
+for file in files:
     succ = logic.calc_order(mensen, projecten)
-    output.write_output_maar_dan_goed("output/F.txt", succ)
-    print()
+    output.write_output_maar_dan_goed(file[6:] + ".out", succ)
