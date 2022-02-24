@@ -1,15 +1,16 @@
-from hashcodeParser import parse_file
 import output
+from hashcodeParser import parse_file
 
-def checkviable(project,skills_to_mens):
-    humans_used=list()
+
+def checkviable(project, skills_to_mens):
+    humans_used = list()
     for i in project.roles:
-        found=False
+        found = False
         for mens in skills_to_mens[i[0]]:
             if (found): break
             for sk in mens.skills_list:
-                if(sk[0]==i[0] and sk[1]>=i[1]):
-                    if(mens not in humans_used):
+                if (sk[0] == i[0] and sk[1] >= i[1]):
+                    if (mens not in humans_used):
                         found = True
                         humans_used.append(mens)
                         break
@@ -104,12 +105,7 @@ def solve(file:str):
     projects_with_assignment=list()
     mensen,projecten=parse_file(file)
     projecten.sort(key=lambda project:den_heuristic(project,0),reverse=True)
-    skills_to_mens=dict()
-    for i in mensen:
-        for j in i.skills_list:
-            if j[0] not in skills_to_mens:
-                skills_to_mens[j[0]]=list()
-            skills_to_mens[j[0]].append(i)
+    skills_to_mens = rekenen(mensen)
     print("a")
     current=0
     den_dag=0
@@ -129,15 +125,27 @@ def solve(file:str):
             current = 0
             den_dag +=eens_zien.time
             projecten.sort(key=lambda project: den_heuristic(project, den_dag), reverse=True)
-        current+=1
+        current += 1
     print("a")
-    den_output=list()
+    den_output = list()
     for i in projects_with_assignment:
-        new_list=list()
+        new_list = list()
         for j in i[1]:
             new_list.append(j[0])
-        den_output.append((i[0],new_list))
+        den_output.append((i[0], new_list))
     return den_output
+
+
+def rekenen(mensen):
+    skills_to_mens = dict()
+    for i in mensen:
+        for j in i.skills_list:
+            if j[0] not in skills_to_mens:
+                skills_to_mens[j[0]] = list()
+            skills_to_mens[j[0]].append(i)
+    return skills_to_mens
+
+
 if __name__ == '__main__':
     files = [
         # 'input/a_an_example.in.txt',
