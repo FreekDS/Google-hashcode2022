@@ -37,10 +37,9 @@ def getMensen(project,skills_to_mens):
         if (found):
             toreturn.append((mens_found,i))
     return toreturn
-
-if __name__ == '__main__':
+def solve(file:str):
     projects_with_assignment=list()
-    mensen,projecten=parse_file("input/a_an_example.in.txt")
+    mensen,projecten=parse_file(file)
     skills_to_mens=dict()
     for i in mensen:
         for j in i.skills_list:
@@ -69,6 +68,18 @@ if __name__ == '__main__':
         for j in i[1]:
             new_list.append(j[0])
         den_output.append((i[0],new_list))
-    output.write_output_maar_dan_goed("buiten.txt",den_output)
+    return den_output
+if __name__ == '__main__':
+    files = [
+        'input/a_an_example.in.txt',
+        'input/b_better_start_small.in.txt',
+        'input/c_collaboration.in.txt',
+        'input/d_dense_schedule.in.txt',
+        'input/e_exceptional_skills.in.txt',
+        'input/f_find_great_mentors.in.txt',
+    ]
+    for file in files:
+        den_output=solve(file)
+        output.write_output_maar_dan_goed(file[6:] + ".out", den_output)
 
 
