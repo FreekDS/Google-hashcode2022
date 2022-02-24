@@ -2,6 +2,16 @@ class human():
     def __init__(self,name:str):
         self.skills_list=list()
         self.name=name
+    def get_skill(self,sk:str):
+        for i in self.skills_list:
+            if(i[0]==sk):
+                return i
+        return None
+    def increment_skill(self,sk,amount):
+        for i in self.skills_list:
+            if(i[0]==sk and i[1]<=amount):
+                i[1]+=1
+                return
 
     def __str__(self):
         return "human:%s, skills %s"%(self.name,str(self.skills_list))
@@ -29,7 +39,7 @@ def parse_file(den_file:str):
         hm=human(persoon[0])
         for jterator in range(int(persoon[1])):
             skill=fileke.readline().replace("\n", "").split(" ")
-            hm.skills_list.append((skill[0],int(skill[1])))
+            hm.skills_list.append([skill[0],int(skill[1])])
         mensen.append(hm)
     for iterator in range(int(aantallen[1])):
         project_string=fileke.readline().replace("\n", "").split(" ")
