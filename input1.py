@@ -22,32 +22,34 @@ def get_mens_met_score(skill, score, mensen):
 
 files = [
     'input/a_an_example.in.txt',
-    'input/b_better_start_small.in.txt'
+    'input/b_better_start_small.in.txt',
+    'input/c_collaboration.in.txt',
+    'input/d_dense_schedule.in.txt',
+    'input/e_exceptional_skills.in.txt',
+    'input/f_find_great_mentors.in.txt',
 ]
 
-mensen, projecten = parse_file('input/a_an_example.in.txt')
-print(mensen)
+for file in files:
+    mensen, projecten = parse_file(file)
+    print(mensen)
 
-projecten.sort(key=lambda project: project.score, reverse=True)
+    projecten.sort(key=lambda project: project.score, reverse=True)
 
-results = {
+    results = {
 
-}
+    }
 
-for project in projecten:
+    for project in projecten:
 
-    project_mensen = []
+        project_mensen = []
 
-    for required_skill in project.roles:
-        mens, index = get_mens_met_score(required_skill[0], required_skill[1], mensen)
-        if mens:
-            print("jep")
-            project_mensen.append(mens.name)
-            mensen.remove(mens)
-    if project_mensen:
-        if len(project_mensen) >= len(project.roles):
-            results[project.name] = project_mensen
+        for required_skill in project.roles:
+            mens, index = get_mens_met_score(required_skill[0], required_skill[1], mensen)
+            if mens:
+                project_mensen.append(mens.name)
+                mensen.remove(mens)
+        if project_mensen:
+            if len(project_mensen) >= len(project.roles):
+                results[project.name] = project_mensen
 
-
-
-write_output("output1.txt", results)
+    write_output(file[6:]+ ".out", results)
