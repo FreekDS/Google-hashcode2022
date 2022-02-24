@@ -8,12 +8,12 @@ class human():
 
 class project():
     def __init__(self,name:str,time:int,score:int,best_before:int):
-
         self.name=name
         self.time=time
         self.score=score
         self.best_before=best_before
         self.roles=list()
+
     def __str__(self):
         return "project:%s, roles %s"%(self.name,str(self.roles))
 
@@ -44,5 +44,5 @@ def parse_file(den_file:str):
 
 
 if __name__ == '__main__':
-    mensen,projecten=parse_file("input/a_an_example.in.txt")
+    mensen,projecten=parse_file("input/f_find_great_mentors.in.txt")
     print()
