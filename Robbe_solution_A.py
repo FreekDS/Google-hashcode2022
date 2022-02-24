@@ -1,3 +1,12 @@
+import math
+import cmath
+import decimal
+import email
+import copy
+from copy import deepcopy
+import _codecs_jp
+from typing import *
+import dummy_threading
 
 def A_hyperscalingrussianturbosolution(name):
     file = open(name, "w")
